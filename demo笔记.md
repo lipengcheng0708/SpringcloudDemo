@@ -12,37 +12,6 @@ demo：
 
 利用Zuul对路由网关进行管理
 
-
-new String()
-
-
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<INPUT>
-		<FPZL>zhangSan</FPZL>
-		<FPZT>23</FPZT>
-
-</INPUT>
-
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<input>
-    
-        <fpzt>111</fpzt>
-
-</input>
-
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<students>
-    
-        <name>zhangSan</name>
-        <age>23</age>
-        <sex>male</sex>
-
-</students>
-
-
-<?xml version="1.0" encoding="utf-8"?><FPXT><OUTPUT><FPZL>3</FPZL><FPZT>4</FPZT><NSRSBH>1</NSRSBH><DATE>2018-08-21 13:37:22</DATE><FPDM>2</FPDM></OUTPUT></FPXT>
-
-
 3.服务之间传递数据
 
 3.1 三种方式
@@ -61,12 +30,8 @@ eureka-server：Eureka注册中心
 
 A把数据传给B，B接收数据
 
-
-
-
 Cannot resolve configuration property 'feign.hystrix.enabled' less... (Ctrl+F1) 
 Checks Spring Boot application .properties configuration files. Highlights unresolved and deprecated configuration keys and invalid values. Works only for Spring Boot 1.2 or higher.
-
 
 java.lang.IllegalStateException: Error processing condition on org.springframework.cloud.netflix.feign.ribbon.FeignRibbonClientAutoConfiguration.feignClient
 
