@@ -77,7 +77,6 @@ A把数据传给B，B接收数据
 
 ```    
 <input type="text" th:field="*{date}">
-
 ```
 
 2.添加依赖Feign时，找不到相关maven包，添加<version>1.4.5.RELEASE</version>版本号后才自动下载和导入。
