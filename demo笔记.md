@@ -30,15 +30,14 @@ eureka-server：Eureka注册中心
 
 A把数据传给B，B接收数据
 
-Cannot resolve configuration property 'feign.hystrix.enabled' less... (Ctrl+F1) 
-Checks Spring Boot application .properties configuration files. Highlights unresolved and deprecated configuration keys and invalid values. Works only for Spring Boot 1.2 or higher.
-
-java.lang.IllegalStateException: Error processing condition on org.springframework.cloud.netflix.feign.ribbon.FeignRibbonClientAutoConfiguration.feignClient
-
 7.20~8.20
+
 1.完成梳理处理流程
+
 2.学习Springboot和SpringCloud相关知识点。
+
 3.完成知识点相关demo
+
 4.学习局端发行模块相关业务
 
 
@@ -70,12 +69,16 @@ java.lang.IllegalStateException: Error processing condition on org.springframewo
 
 在后端赋值给日期，前端显示日期，对象再返回给后端时，后端取不到值。
 
-    <p th:text="*{date}"></p>
+```
+<p th:text="*{date}"></p>
+```
 
 但是使用input标签可以使用，还需查看资料。
-    
-    <input type="text" th:field="*{date}">
 
+```    
+<input type="text" th:field="*{date}">
+
+```
 
 2.添加依赖Feign时，找不到相关maven包，添加<version>1.4.5.RELEASE</version>版本号后才自动下载和导入。
 
