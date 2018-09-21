@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,15 +22,14 @@ public class MessageParseController {
     private DemoFeignService demoFeignService;
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-    private String resultXML;
 
     //初始页面index
     @RequestMapping(value = "/index", produces = "text/plain;charset=UTF-8")
     public String index(ModelMap map) {
 
-        OutputData outputData = new OutputData();
-        outputData.setDate(getDate());
-        map.put("fpMessage", outputData);
+        OutputData output = new OutputData();
+        output.setDate(getDate());
+        map.put("fpMessage", output);
         return "index";
     }
 
@@ -40,24 +38,28 @@ public class MessageParseController {
     @RequestMapping(value = "/parseXML", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
     private String parse(ModelMap map) {
 
-        resultXML = demoFeignService.generate();
-        if ("".equals(resultXML)) {
+        OutputData outputData = new OutputData();
+
+       // 服务降级处理
+        String resultXML = demoFeignService.generate();
+
+
+        if ("error".equals(resultXML)) {
             return "error";
         }
 
         //解析xml
-        OutputData outputData = getXML(resultXML);
+        outputData = getXML(resultXML,outputData);
         map.put("fpMessage", outputData);
         return "index";
     }
 
     //解析xml报文
-    private OutputData getXML(String xml) {
+    private OutputData getXML(String xml,OutputData outputData) {
 
-        OutputData outputData = new OutputData();
         try {
             Document document = DocumentHelper.parseText(xml);
-            Element rootElement = document.getRootElement();//获取跟节点FPXT
+            Element rootElement = document.getRootElement();// 获取根节点FPXT
 
             Element inputElement = rootElement.element("OUTPUT");
             outputData.setFpzl(inputElement.element("FPZL").getTextTrim());
@@ -73,18 +75,11 @@ public class MessageParseController {
         return outputData;
     }
 
+    //获取当前时间
     private String getDate() {
 
         Date date = new Date();
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         return simpleDate.format(date);
-    }
-
-    //接收serviceA的xml报文
-    @RequestMapping(value = "/serviceGet", method = RequestMethod.GET)
-    public void helloService() {
-
-        resultXML = demoFeignService.generate();
-        logger.debug("接收serviceA的xml报文 = "+resultXML);
     }
 }

@@ -39,11 +39,10 @@ public class MessageGenerationController {
     @RequestMapping(value = "/generateXML", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
     private String generate(@ModelAttribute InputData inputData) {
 
-        logger.debug("inputData");
-        logger.debug("inputData = " + inputData.toString());
         result = rtnXML(inputData);
         return "result = " + result;
     }
+
 
     //生成xml报文
     private String rtnXML(InputData inputData) {
@@ -73,18 +72,18 @@ public class MessageGenerationController {
         return resultXML;
     }
 
-    private String getDate() {
-
-        Date date = new Date();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        return simpleDate.format(date);
-    }
-
-
     @RequestMapping(value = "/generate", method = RequestMethod.GET)
     public ResponseEntity<Object> generate() {
 
         logger.debug("resultXML = " + result);
         return new ResponseEntity<Object>(result, HttpStatus.OK);
+    }
+
+    //获取当前时间
+    private String getDate() {
+
+        Date date = new Date();
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        return simpleDate.format(date);
     }
 }

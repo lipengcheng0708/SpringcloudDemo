@@ -74,31 +74,18 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
         </dependency>
 
-
-        <!--服务调用方 添加依赖Feign-->
+        <!--服务调用方 添加依赖Feign 这里只依赖了Feign，没有依赖Ribbon和Hystrix。-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.4.5.RELEASE</version>
         </dependency>
-
-        <!--&lt;!&ndash;服务调用方 添加依赖Feign&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-feign</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-netflix-core</artifactId>-->
-            <!--<version>1.4.4.RELEASE</version>-->
-        <!--</dependency>-->
 
     </dependencies>
 

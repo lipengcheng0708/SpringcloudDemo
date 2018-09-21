@@ -5,25 +5,6 @@
     <title>接收解析报文</title>
 </head>
 
-<SCRIPT language="JavaScript">
-
-    function ok() {
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-
-        var nsrsbh = document.generation.nsrsbh.value;
-        var fpdm = document.generation.fpdm.value;
-        var fpzl = document.generation.fpzl.value;
-        var fpzt = document.generation.fpzt.value;
-        var time = year + "/" + month + "/" + day;//获取当前时间
-        // var xml = "<INPUT>" + "<FPZL>" + fpzl + "</FPZL>" + "<FPDM>" + fpdm + "</FPDM>" + "<FPZT>" + fpzt + "</FPZT>" + "<NSRSBH>" + nsrsbh + "</NSRSBH>" + "<DATE>" + date + "</DATE>" + "</INPUT>";
-
-        document.generation.onsubmit();
-    }
-</SCRIPT>
-
 <body>
 <form action="#" th:action="@{/parseXML}" th:object="${fpMessage}" method="post">
 
@@ -68,11 +49,8 @@
                 </label>
             </td>
         </tr>
-
-
     </table>
-    <input type="submit"/>
-    <!--<input type="button" name="Button" value="生成报文" onclick="ok()">-->
+    <input type="submit" value="解析报文"/>
 </form>
 </body>
 </html>
